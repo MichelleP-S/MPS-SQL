@@ -7,10 +7,7 @@ Skills used : CREATE, UPDATE, SELECT, CTE, JOINS, OREDR BY, GROUP BY
 select *
 from nashville_housing 
 
---------------------------------------------------------------------------------------------------------------------------
-
-
-/*Standardize Date Format*/
+--Standardize Date Format
 
 
 select `Sale Date` 
@@ -24,10 +21,8 @@ from nashville_housing
 update nashville_housing 
 set `Sale Date`= convert(`Sale Date`, date)
 
---------------------------------------------------------------------------------------------------------------------------
 
-
-/*Populate Property Address Data*/
+--Populate Property Address Data
 
 
 select * 
@@ -54,10 +49,8 @@ join nashville_housing b
 	and a.Column1 != b.Column1 
 where a.`Property Address` is null 
 
---------------------------------------------------------------------------------------------------------------------------
 
-
-/*Breaking out Address into Individual Columns (Address, City, State)*/
+--Breaking out Address into Individual Columns (Address, City, State)
 
 
 select `Property Address` 
@@ -90,10 +83,7 @@ select `Owner Address`
 from nashville_housing 
 
 
---------------------------------------------------------------------------------------------------------------------------
-
-
-/*CREATING A SPLIT STRING FUNCTION TO SPLIT THE OWNER ADDRESS*/
+--REATING A SPLIT STRING FUNCTION TO SPLIT THE OWNER ADDRESS
 
 
 create function SPLIT_STR(
@@ -138,10 +128,8 @@ set `State` varchar(255);
 update nashville_housing 
 set `State` = SPLIT_STR(`Owner Address`, ',', 3)
 
---------------------------------------------------------------------------------------------------------------------------
 
-
-/*Change Y and N to Yes and No in `Sold as Vacant` */
+--Change Y and N to Yes and No in `Sold as Vacant` 
 
 
 select distinct (`Sold As Vacant`), count(`Sold As Vacant`) 
@@ -164,10 +152,7 @@ set `Sold As Vacant`  = case
 	when `Sold As Vacant` = 'N' then 'No'
 	end as `Sold As Vacant`
 	
---------------------------------------------------------------------------------------------------------------------------	
-	
-	
-/*Remove Duplicate*/
+--Remove Duplicate
 
 
 with RowNumCTE 
@@ -189,11 +174,9 @@ from nashville_housing
 delete 
 from RowNumCTE
 where row_num > 1;
+
 	
---------------------------------------------------------------------------------------------------------------------------
-	
-	
-/*Delete Unused Column*/
+--delete Unused Column
 
 
 alter table nashville_housing 
