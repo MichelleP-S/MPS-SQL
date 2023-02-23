@@ -9,7 +9,7 @@ INSERT INTO Scorecard.[dbo].Example
 SELECT  DISTINCT  Masterkey
 FROM	[AggregateDatabase1].dbo.[Example_Table]
 WHERE	IDOrganization = 279
-AND Masterkey LIKE '292%'
+AND Masterkey LIKE '292%'  
 
 
 
@@ -109,4 +109,4 @@ FROM 	[Example],[dbo].(Recommendations)  r WITH(NOLOCK)
 						OR  R.Recommendation  LIKE  '%Invalid'
 						OR  R.Recommendation  LIKE  '%Exception')
 GROUP BY r.ProtCode
-ORDER BY 1
+ORDER BY 1 
