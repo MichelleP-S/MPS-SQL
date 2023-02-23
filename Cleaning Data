@@ -11,7 +11,7 @@ from nashville_housing
 
 
 select `Sale Date` 
-from nashville_housing 
+from nashville_housing
 
 
 select `Sale Date`, convert(`Sale Date`, date)
