@@ -13,7 +13,7 @@ Insert into #temp_employee2 values (
 Insert into #temp_employee2 
 SELECT * From SQLTutorial..EmployeeSalary
 
-Select * From #temp_employee2
+Select * From #temp_employee2 
 
 
 
